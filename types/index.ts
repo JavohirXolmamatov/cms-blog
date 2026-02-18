@@ -1,17 +1,17 @@
 export interface ChildProps {
-	children: React.ReactNode
+  children: React.ReactNode;
 }
 
 export interface IBlog {
-	title: string
-	description: string
-	author: string
-	date: string
-	image: string
-	tags: string[]
+  title: string;
+  description: string;
+  author: string;
+  date: string;
+  image: string;
+  tags: string[];
 }
 
 export interface IAuthor {
-	name: string
-	image: string
+  name: string;
+  image: string;
 }
