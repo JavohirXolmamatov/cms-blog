@@ -1,9 +1,11 @@
 import BlogCard from "@/components/cards/blog";
-import { blogs } from "@/constants";
+import { getBlogs } from "@/service/blog.service";
 import { Dot, Home } from "lucide-react";
 import Link from "next/link";
 
-function BlogsPage() {
+async function BlogsPage() {
+  const blogs = await getBlogs();
+  if (!blogs) return null;
   return (
     <div className="max-w-6xl mx-auto">
       <div className="relative min-h-[40vh] flex items-center justify-end flex-col">
@@ -25,9 +27,10 @@ function BlogsPage() {
       </div>
 
       <div className="grid grid-cols-2 max-md:grid-cols-1 gap-x-4 gap-y-24 mt-24">
-        {blogs.map((blog) => (
-          <BlogCard key={blog.title} {...blog} isVertical />
-        ))}
+        {blogs &&
+          blogs?.map((blog) => (
+            <BlogCard key={blog?.title} {...blog} isVertical />
+          ))}
       </div>
     </div>
   );
