@@ -1,6 +1,7 @@
 import { Badge } from "@/components/ui/badge";
 import {
   Drawer,
+  DrawerClose,
   DrawerContent,
   DrawerHeader,
   DrawerTitle,
@@ -8,9 +9,11 @@ import {
 } from "@/components/ui/drawer";
 import { Input } from "@/components/ui/input";
 import { popularCategories, popularTags } from "@/constants";
-import { Search } from "lucide-react";
 
-const GlobalSearch = () => {
+import { Minus, Search } from "lucide-react";
+import Link from "next/link";
+
+function GlobalSearch() {
   return (
     <Drawer>
       <DrawerTrigger>
@@ -32,27 +35,48 @@ const GlobalSearch = () => {
           <div className="flex flex-col space-y-2 mt-4">
             <p className="font-creteRound text-2xl">See posts by categories</p>
             <div className="flex flex-wrap gap-2">
-              {popularCategories.map((category) => (
-                <Badge key={category.slug} variant={"secondary"}>
-                  {category.name}
-                </Badge>
-              ))}
+              {popularCategories &&
+                popularCategories.map((category) => (
+                  <Link href={`/category/${category.slug}`} key={category.slug}>
+                    <Badge key={category.slug} variant={"secondary"}>
+                      {category.name}
+                    </Badge>
+                  </Link>
+                ))}
+              <Minus className="w-8 h-8" />
+              <Link
+                href="/category"
+                className="underline text-blue-500 hover:text-blue-500/80 font-creteRound"
+              >
+                <DrawerClose className="underline">See all</DrawerClose>
+              </Link>
             </div>
           </div>
           <div className="flex flex-col space-y-2 mt-4">
             <p className="font-creteRound text-2xl">See posts by tags</p>
-            <div className="flex flex-wrap gap-2">
-              {popularTags.map((tag) => (
-                <Badge key={tag.slug} variant={"secondary"}>
-                  {tag.name}
-                </Badge>
-              ))}
+            <div className="flex flex-wrap gap-2 items-center">
+              {popularTags &&
+                popularTags?.map((tag) => (
+                  <Link href={`/tag/${tag.slug}`} key={tag.slug}>
+                    <Badge key={tag?.slug} variant={"secondary"}>
+                      {tag?.name}
+                    </Badge>
+                  </Link>
+                ))}
+
+              <Minus className="w-8 h-8" />
+              <Link
+                href="/tag"
+                className="underline text-blue-500 hover:text-blue-500/80 font-creteRound"
+              >
+                <DrawerClose className="underline">See all</DrawerClose>
+              </Link>
             </div>
           </div>
         </div>
       </DrawerContent>
     </Drawer>
   );
-};
+}
 
 export default GlobalSearch;

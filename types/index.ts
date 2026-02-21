@@ -13,12 +13,14 @@ export interface ICategory {
   name: string;
   slug: string;
   id: string;
+  blogs: IBlog[];
 }
 
 export interface ITag {
   name: string;
   slug: string;
   id: string;
+  blogs: IBlog[];
 }
 
 export interface IImages {
@@ -32,8 +34,9 @@ export interface IBlog {
   createdAt: string;
   image: IImages;
   tag: ITag;
-  category: ICategory[];
+  category: ICategory;
   content: {
     html: string;
   };
+  slug: string;
 }
