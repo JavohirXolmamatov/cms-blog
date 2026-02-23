@@ -7,6 +7,7 @@ export interface IAuthor {
   image: IImages;
   id: string;
   bio: string;
+  blogs: IBlog[];
 }
 
 export interface ICategory {

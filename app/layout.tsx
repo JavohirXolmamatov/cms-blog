@@ -3,6 +3,7 @@ import { Crete_Round, Work_Sans } from "next/font/google";
 import "./globals.css";
 import { ChildProps } from "@/types";
 import { ThemeProvider } from "@/components/providers/theme-provider";
+import { Toaster } from "sonner";
 
 const creteRound = Crete_Round({
   weight: "400",
@@ -36,6 +37,7 @@ export default function RootLayout({ children }: ChildProps) {
         >
           {children}
         </ThemeProvider>
+        <Toaster position="top-right" richColors />
       </body>
     </html>
   );
