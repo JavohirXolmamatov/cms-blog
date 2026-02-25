@@ -41,3 +41,8 @@ export interface IBlog {
   };
   slug: string;
 }
+
+export interface IArchiveBlog {
+  year: string;
+  blogs: IBlog[];
+}

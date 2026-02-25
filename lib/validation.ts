@@ -1,3 +1,4 @@
+import { title } from "process";
 import { z } from "zod";
 export const contactSchema = z.object({
   email: z
@@ -9,4 +10,8 @@ export const contactSchema = z.object({
     .min(1, "Message is required")
     .max(5000, "Message must be less than 5000 characters"),
   name: z.string().min(1, "Name is required"),
+});
+
+export const searchSchema = z.object({
+  title: z.string().min(1, "Title is required"),
 });

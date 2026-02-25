@@ -4,9 +4,21 @@ import { IBlog } from "@/types";
 import { Dot, Home } from "lucide-react";
 import Link from "next/link";
 
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
+  const tag = await getBlogsByTag(slug);
+  return {
+    title: tag?.name,
+  };
+}
+
 async function TagSlug({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const tag =  await getBlogsByTag(slug);
+  const tag = await getBlogsByTag(slug);
 
   return (
     <div className="max-w-6xl mx-auto">

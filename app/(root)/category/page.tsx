@@ -2,6 +2,12 @@ import { Dot, Home } from "lucide-react";
 import Link from "next/link";
 import { getCategories } from "@/service/category.service";
 
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "All categories",
+};
+
 const Page = async () => {
   const categories = await getCategories();
 

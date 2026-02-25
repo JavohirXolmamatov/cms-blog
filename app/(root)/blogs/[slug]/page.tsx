@@ -18,6 +18,22 @@ import Image from "next/image";
 import Link from "next/link";
 import { format } from "date-fns";
 
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
+  const blog = await getDetialedBlog(slug);
+  return {
+    title: blog?.title,
+    description: blog?.description,
+    openGraph: {
+      image: blog?.image?.url,
+    },
+  };
+}
+
 async function SlugPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const blog = await getDetialedBlog(slug);

@@ -1,9 +1,12 @@
 import ContactForm from "@/components/forms/contact-form";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 import { Dot, Home, Mail, Phone, Send } from "lucide-react";
 import Link from "next/link";
+
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Contact us",
+};
 
 function ContactPage() {
   return (

@@ -2,6 +2,12 @@ import { Dot, Home } from "lucide-react";
 import Link from "next/link";
 import { getTags } from "@/service/tag.service";
 
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "All tags",
+};
+
 const Page = async () => {
   const tags = await getTags();
 

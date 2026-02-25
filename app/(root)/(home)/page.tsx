@@ -2,7 +2,11 @@ import BlogCard from "@/components/cards/blog";
 import BgArrow from "@/components/shared/bg-arrow";
 import { getBlogs } from "@/service/blog.service";
 import { IBlog } from "@/types";
+import { Metadata } from "next";
 
+export const metadata: Metadata = {
+  title: "Home",
+};
 async function HomePage() {
   const blogs = await getBlogs();
   if (!blogs) return null;
